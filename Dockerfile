@@ -1,2 +1,4 @@
 FROM --platform=${BUILDPLATFORM} alpine
-RUN echo "Hello Cloud Agent ${BUILDPLATFORM}"
+ARG TARGETOS
+ARG TARGETARCH
+RUN echo "Hello Cloud Agent ${TARGETOS} ${TARGETARCH}"

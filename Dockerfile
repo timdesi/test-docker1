@@ -1,2 +1,2 @@
-FROM alpine
-RUN echo "Hello Cloud Agent"
+FROM --platform=${BUILDPLATFORM} alpine
+RUN echo "Hello Cloud Agent ${BUILDPLATFORM}"

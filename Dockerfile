@@ -1,2 +1,2 @@
-FROM busybox
+FROM alpine
 RUN echo "Hello Cloud Agent"

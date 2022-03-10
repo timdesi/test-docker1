@@ -5,7 +5,7 @@ RUN echo "Hello Cloud Agent ${TARGETOS}/${TARGETARCH}"
 ADD https://github.com/timdesi/test-docker1/releases/latest/download/cloud_agent_azure-linux-arm64.tar.gz /edge/cloudagent.tar.gz
 WORKDIR /edge
 RUN ls -l
-RUN tar -xf cloudagent.tar.gz
+RUN tar -xf cloudagent.tar.gz --remove-files
 RUN ls -l
 
 

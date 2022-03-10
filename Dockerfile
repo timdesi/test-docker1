@@ -8,4 +8,4 @@ RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o /out/cloudagent .
 
 FROM scratch AS bin
 COPY --from=build /out/cloudagent /
-CMD ["cloudagent"]
+CMD ["/cloudagent"]

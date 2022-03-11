@@ -6,13 +6,16 @@ ARG TARGETOS
 ARG TARGETARCH
 ARG CLOUD_AGENT_VERSION=v0.0
 
+# Build flags
 ARG LDFLAGS="-ldflags=-w -s"
 ARG OTHERFLAGS="-trimpath -mod=readonly"
 ARG VERSION="-X 'main.version=${CLOUD_AGENT_VERSION}'"
 RUN echo ${VERSION}
 ARG TAGS=things
-RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -tags ${TAGS} -o /out/cloudagent "${LDFLAGS} ${VERSION}" ${OTHERFLAGS} .
 
+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -tags ${TAGS} -o /target/native "${LDFLAGS} ${VERSION}" ${OTHERFLAGS} .
+
+# Final container
 FROM scratch AS bin
-COPY --from=build /out/cloudagent /
-CMD ["/cloudagent"]
+COPY --from=build /target/native /app
+CMD ["/app/cloudagent"]

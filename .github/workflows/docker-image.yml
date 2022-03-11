@@ -7,6 +7,18 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Find latest tag
+        uses: oprypin/find-latest-tag@v1
+        with:
+          repository: ${{ github.repository }}
+          releases-only: false
+        id: build_tag
+      - run: echo "repo is at version ${{ steps.build_tag.outputs.tag }}"
+      - name: Build variables
+        id: build_vars
+        run: |
+          echo "::set-output name=version::${{ steps.build_tag.outputs.tag }}-$(date +'%d%m%Y')"
+          echo "::set-output name=tags::things"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -23,8 +35,8 @@ jobs:
           CLOUD_AGENT_VERSION: "v1.0"
         with:
           platforms: linux/amd64,linux/arm64
-          build-args: CLOUD_AGENT_VERSION=v1.0
+          build-args: CLOUD_AGENT_VERSION=${{ steps.build_vars.outputs.version }} Build with ${{ steps.build_vars.outputs.tags }}
           push: true
           tags: |
             ghcr.io/${{ github.repository }}/cloudagent:latest
-            ghcr.io/${{ github.repository }}/cloudagent:1.0.0
+            ghcr.io/${{ github.repository }}/cloudagent:${{ steps.build_tag.outputs.tag }}

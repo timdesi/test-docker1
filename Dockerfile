@@ -17,5 +17,5 @@ RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -tags ${TAGS} -o /out/cloudag
 
 # Final container
 FROM scratch AS bin
-COPY --from=build /out/cloudagent /
-CMD ["/cloudagent"]
+COPY --from=build /out/cloudagent /app
+CMD ["/app/cloudagent"]

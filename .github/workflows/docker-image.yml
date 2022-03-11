@@ -27,6 +27,7 @@ jobs:
           CLOUD_AGENT_VERSION: "v1.0"
         with:
           platforms: linux/amd64,linux/arm64
+          build-args: CLOUD_AGENT_VERSION=v1.0
           push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/app:latest

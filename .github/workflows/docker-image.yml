@@ -26,5 +26,5 @@ jobs:
           build-args: CLOUD_AGENT_VERSION=v1.0
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/app:latest
-            ghcr.io/${{ github.repository_owner }}/app:1.0.0
+            ghcr.io/${{ github.repository }}/cloudagent:latest
+            ghcr.io/${{ github.repository }}/cloudagent:1.0.0

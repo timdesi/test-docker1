@@ -8,7 +8,7 @@ ARG CLOUD_AGENT_VERSION=v0.0
 
 ARG LDFLAGS="-ldflags=-w -s"
 ARG OTHERFLAGS="-trimpath -mod=readonly"
-ARG VERSION="-X 'main.version=${CLOUD_AGENT_VERSION}'"
+ARG VERSION="-X main.version=${CLOUD_AGENT_VERSION}"
 RUN echo ${VERSION}
 ARG TAGS=things
 RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -tags ${TAGS} -o /out/cloudagent ${LDFLAGS} ${VERSION} ${OTHERFLAGS} .

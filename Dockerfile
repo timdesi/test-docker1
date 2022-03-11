@@ -13,9 +13,9 @@ ARG VERSION="-X 'main.version=${CLOUD_AGENT_VERSION}'"
 RUN echo ${VERSION}
 ARG TAGS=things
 
-RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -tags ${TAGS} -o /native/cloudagent "${LDFLAGS} ${VERSION}" ${OTHERFLAGS} .
+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -tags ${TAGS} -o /out/cloudagent "${LDFLAGS} ${VERSION}" ${OTHERFLAGS} .
 
 # Final container
 FROM scratch AS bin
-COPY --from=build /native/cloudagent /app
-CMD ["/app/cloudagent"]
+COPY --from=build /out/cloudagent /
+CMD ["/cloudagent"]

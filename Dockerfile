@@ -4,7 +4,12 @@ ENV CGO_ENABLED=0
 COPY . .
 ARG TARGETOS
 ARG TARGETARCH
-RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o /out/cloudagent .
+
+ENV LDFLAGS="-ldflags=-w -s"
+ENV OTHERFLAGS="-trimpath -mod=readonly"
+ENV VERSION="-X 'main.version=$CLOUD_AGENT_VERSION'"
+ENV TAGS=things
+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -tags ${TAGS} -o /out/cloudagent ${LDFLAGS} ${VERSION} ${OTHERFLAGS} .
 
 FROM scratch AS bin
 COPY --from=build /out/cloudagent /

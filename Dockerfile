@@ -17,5 +17,6 @@ RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -tags ${TAGS} -o /out/cloudag
 
 # Final container
 FROM scratch AS bin
-COPY --from=build /out/cloudagent /
+COPY --from=build /src/cloudagent /
+COPY --from=build /src/iothub.crt /
 CMD ["/cloudagent"]

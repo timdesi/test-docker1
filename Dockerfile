@@ -21,9 +21,9 @@ RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -tags ${TAGS} -o /out/cloudag
 
 # Final container
 FROM busybox AS bin
-COPY --from=build /src/cloudagent /app
+COPY --from=build /src/cloudagent /app/
 #COPY --from=build /src/iothub.crt /
-COPY --from=build /src/resources/cloudagent_start.sh /app
+COPY --from=build /src/resources/cloudagent_start.sh /app/
 COPY --from=build /src/resources/. /config
 RUN ls -l
 RUN ls -l /config
@@ -32,4 +32,4 @@ RUN ls -l /config
 
 WORKDIR /app
 RUN ls -l
-CMD ["/cloudagent_start.sh"]
+CMD ["cloudagent_start.sh"]

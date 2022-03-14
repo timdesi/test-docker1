@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package edge.containers.api.swdc;
+
+import "manifest.proto";
+
+option go_package = "edge/containers/api/swdc";
+
+// Represents a containers configuration - i.e. manifest
+message ManifestApply {
+
+   // The Manifest to apply to the edge device
+   Manifest manifest = 1;
+   
+}

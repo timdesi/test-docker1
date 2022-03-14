@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package edge.containers.api.swdc;
+
+option go_package = "edge/containers/api/swdc";
+
+message ContainerRemoved {
+
+    //The name of the container
+	string name = 1;
+	
+}

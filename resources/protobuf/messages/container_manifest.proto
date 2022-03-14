@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package edge.containers.api.swdc;
+
+import "configuration.proto";
+
+option go_package = "edge/containers/api/swdc";
+
+message ContainerManifest {
+
+    //The name of the container
+    string name = 1;
+
+    // The full reference of the image to use for the container
+    string image_ref = 2;
+
+    // The container's environment and process configuration
+    Configuration config = 3;
+}

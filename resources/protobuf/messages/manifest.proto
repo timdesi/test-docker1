@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package edge.containers.api.swdc;
+
+import "container_manifest.proto";
+
+option go_package = "edge/containers/api/swdc";
+
+// Represents a containers configuration - i.e. manifest
+message Manifest {
+
+    // The name of the manifest
+    string name = 1;
+
+    // The version of the manifest
+    string version = 2;
+
+    // The list of container configurations to apply via this manifest
+    repeated ContainerManifest containers = 3;
+}

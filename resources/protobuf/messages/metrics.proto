@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package com.bosch.iot.edge.metrics;
+
+option go_package = "edge/metrics/swdc";
+
+/*
+ * Describes metric data with identifier, originator, value and timestamp
+ */
+message MetricData {
+
+	/*
+	 * Metric ID, e.g. "cpu.usage", "memory.usage", ...
+	 */
+	string id = 1;
+
+	/*
+	 * The Originator is what item is being measured. It can be a V-App container or the entire system.
+	 */
+	string originator = 2;
+
+	/*
+	 * Unit based value of the metric data
+	 */
+	double value = 3;
+
+	/*
+	 * UNIX timestamp
+	 */
+	int64 timestamp = 4;
+}
+
+message Metrics {
+
+	/*
+	 * List of metric data
+	 */
+	repeated MetricData data = 1;
+
+}

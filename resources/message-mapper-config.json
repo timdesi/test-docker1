@@ -1,0 +1,64 @@
+{
+	"messageMappings": {
+		"telemetry": {
+			"2": {
+				"metrics" : {
+					"protoFile": "protobuf/messages/metrics.proto",
+					"protoMessage": "Metrics",
+					"dittoMapping": {
+						"topic": "/things/live/messages/metrics",
+						"path": "/outbox/messages/metrics"
+					}
+				}
+			},
+			"3": {
+				"container.created": {
+					"protoFile": "protobuf/messages/container_created.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/created",
+						"path": "/outbox/messages/created"
+					}
+				},
+				"container.removed": {
+					"protoFile": "protobuf/messages/container_removed.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/removed",
+						"path": "/outbox/messages/removed"
+					}
+				},
+				"container.stateChanged": {
+					"protoFile": "protobuf/messages/container_state_changed.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/live/messages/stateChanged",
+						"path": "/outbox/messages/stateChanged"
+					}
+				},
+				"container.manifest": {
+					"protoFile": "protobuf/messages/manifest_state.proto",
+					"dittoMapping": {
+						"topic": "edge:containers/things/twin/commands/modify",
+						"path": "/features/ContainerOrchestrator/properties/state/status"
+					}
+				}
+			}
+		},
+		"command": {
+			"container.manifest": {
+				"protoFile": "protobuf/messages/manifest_apply.proto",
+				"dittoMapping": {
+					"thing" : "edge:containers",
+					"action" : "apply",
+					"path":"/features/ContainerOrchestrator/inbox/messages/apply"
+				}
+			},
+			"metricsRequest": {
+				"protoFile": "protobuf/messages/metrics_request.proto",
+				"protoMessage": "MetricsRequest",
+				"dittoMapping": {
+					"action" : "metricsRequest",
+					"path":"/features/Metrics/inbox/messages/metricsRequest"
+				}
+			}
+		}
+	}
+}

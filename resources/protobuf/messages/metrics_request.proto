@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package com.bosch.iot.edge.metrics;
+
+option go_package = "edge/metrics/swdc";
+
+/*
+ * Describes optional filter that can be set when requesting metrics.
+ */
+message Filter {
+
+	/*
+	 * List of metric IDs, e.g. "cpu.usage", "memory.usage", ...
+	 */
+	repeated string id = 1;
+
+	/*
+	 * The Originator is what item is being measured. It can be a V-App container or the entire system.
+	 */
+	string originator = 2;
+
+}
+
+/*
+ * Describes metrics request.
+ */
+message MetricsRequest {
+
+	/*
+	 * Reporting frequency, zero or negative value means stop metric reporting.
+	 */
+	int32 frequency  = 1;
+
+	/*
+	 * Describes optional filter that can be set when requesting metrics in order to limit data to only required metrics.
+	 */
+	repeated Filter filter = 2;
+}

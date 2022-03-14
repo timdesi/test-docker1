@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package edge.containers.api.swdc;
+
+import "state.proto";
+
+option go_package = "edge/containers/api/swdc";
+
+message ContainerStateChanged {
+
+    //The name of the container
+	string name = 1;
+
+	// The state of the container
+	State state = 2;
+	
+}

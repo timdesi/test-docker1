@@ -32,4 +32,4 @@ RUN ls -l /config
 
 WORKDIR /app
 RUN ls -l
-CMD ["/cloudagent_start.sh"]
+CMD ["./cloudagent_start.sh"]

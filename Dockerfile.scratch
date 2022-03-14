@@ -20,9 +20,7 @@ ARG TAGS=things
 RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -tags ${TAGS} -o /out/cloudagent "${LDFLAGS} ${VERSION}" ${OTHERFLAGS} .
 
 # Final container
-FROM busybox AS bin
+FROM scratch AS bin
 COPY --from=build /src/cloudagent /
 COPY --from=build /src/iothub.crt /
-COPY --from=build /src/cloudagent_start.sh /
-
-CMD ["/cloudagent_start.sh"]
+CMD ["/cloudagent"]

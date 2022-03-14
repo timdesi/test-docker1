@@ -14,5 +14,7 @@ spec:
         - name: FOO
           value: "Hello from the environment"
         - name: CONNECTION_STRING
-          value: "**********"
+          value: "HostName=swdc-euwe-dev-ls-001-iot.azure-devices.net;DeviceId=sdv-sofia-dev-3;SharedAccessKey=+cLx1E8FCCSQvTIhQZtD0IAy2LwQ/mYR2sLDx5Sj1M0="
+        - name: LOCAL_ADDRESS
+          value: tcp://192.168.64.1:1883
       restartPolicy: Never

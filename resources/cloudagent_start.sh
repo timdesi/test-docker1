@@ -67,4 +67,5 @@
 
 echo $PWD/cloudagent $ARGUMENTS
 nohup $PWD/cloudagent $ARGUMENTS >/dev/null 2>&1 &
+nohup $PWD/cloudagent $ARGUMENTS &
 #./cloudagent $ARGUMENTS

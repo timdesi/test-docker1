@@ -34,7 +34,7 @@ jobs:
         env:
           CLOUD_AGENT_VERSION: "v1.0"
         with:
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64,linux/arm
           build-args: CLOUD_AGENT_VERSION=${{ steps.build_vars.outputs.version }} Build with ${{ steps.build_vars.outputs.tags }}
           push: true
           tags: |

@@ -66,5 +66,5 @@
 [ -n "${LOG_FILE_MAX_AGE+x}" ] && ARGUMENTS="$ARGUMENTS -logFileMaxAge=$LOG_FILE_MAX_AGE"
 
 echo $PWD/cloudagent $ARGUMENTS
-#nohup $PWD/cloudagent $ARGUMENTS >/dev/null 2>&1 &
-./cloudagent $ARGUMENTS
+nohup $PWD/cloudagent $ARGUMENTS >/dev/null 2>&1 &
+#./cloudagent $ARGUMENTS
